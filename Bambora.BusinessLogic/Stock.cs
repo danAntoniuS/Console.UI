@@ -20,11 +20,12 @@ namespace Bambora.BusinessLogic
 
         public async Task SaveStockHistory(string symbol, string path)
         {
-            var r = await repoStockPrice.GetStockPriceHistory(symbol)
-                                                              .ConfigureAwait(continueOnCapturedContext: false);
-            var header = headerFormatter.GetReportHeader(r.MetaData);
-            var body = bodyFormatter.GetReportBody(r.TimeSeriesDaily);
+            var stockInfo = await repoStockPrice.GetStockPriceHistory(symbol)
+                                                .ConfigureAwait(continueOnCapturedContext: false);
+            var header = headerFormatter.GetReportHeader(stockInfo.MetaData);
+            var body = bodyFormatter.GetReportBody(stockInfo.TimeSeriesDaily);
             string report = $"{ header} {body}";
+            //could have abstracted the file save too by using an interface && class
             System.IO.File.WriteAllLines(path, new string[] { report });
         }
     }

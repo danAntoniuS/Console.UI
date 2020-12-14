@@ -15,12 +15,16 @@ namespace Console.UI
     {
         static Task Main(string[] args)
         {
+            if(args == null || args[0] == null)
+            {
+                throw new ArgumentNullException("Please pass a stock as a first argument");
+            }
 
             using IHost host = CreateHostBuilder(args).Build();           
-            var t = IGetStock(host, args[0]);
+            var task = IGetStock(host, args[0]);
             try
             {
-                t.Wait();
+                task.Wait();
             }
             catch(Exception ex)
             {
