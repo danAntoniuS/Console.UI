@@ -13,7 +13,7 @@ namespace ReportFormatter
             //Arrange
             string headerOutput1 = @"1. Information Daily Prices (open, high, low, close) and Volumes";
             string headerOutput2 = @"2. Symbol MSFT";
-            string headerOutput3 = @"3. Last Refreshed";
+            string headerOutput3 = @"3. Last Refreshed 2020-12-11";
 
             var headerFormatter = new ReportHeaderFormatter();
             var metadata = new Dictionary<string, string>();
