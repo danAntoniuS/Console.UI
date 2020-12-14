@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Console.UI": {
+      "commandName": "Project",
+      "commandLineArgs": "MSFT"
+    }
+  }
+}
